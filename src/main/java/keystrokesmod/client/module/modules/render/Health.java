@@ -1,5 +1,6 @@
 package keystrokesmod.client.module.modules.render;
 
+import keystrokesmod.client.clickgui.raven.ClickGui;
 import keystrokesmod.client.module.Module;
 import keystrokesmod.client.module.setting.impl.DescriptionSetting;
 import keystrokesmod.client.module.setting.impl.SliderSetting;
@@ -16,7 +17,7 @@ public class Health extends Module {
 
     public Health() {
         super("Health", ModuleCategory.render);
-        this.registerSetting(yPosition = new SliderSetting("Y Position", 0.5, 0, 1, 0.05));
+        this.registerSetting(yPosition = new SliderSetting("Y Position", 0.5, 0, 1, 0.005));
     }
 
     @SubscribeEvent
@@ -26,7 +27,7 @@ public class Health extends Module {
             int width = res.getScaledWidth();
             int height = res.getScaledHeight();
 
-            String t = mc.thePlayer.getHealth() + "/" + mc.thePlayer.getMaxHealth();
+            String t = "" + mc.thePlayer.getHealth();
             int x = width / 2 - mc.fontRendererObj.getStringWidth(t) / 2;
             int y = (int)(height * yPosition.getInput());
 
@@ -35,6 +36,8 @@ public class Health extends Module {
                 rgb = 0xff0000;
             } else if (mc.thePlayer.getHealth() <= 10) {
                 rgb = 0xffa500;
+            } else if (mc.thePlayer.getHealth() <= 15) {
+                rgb = 0xFFDC00;
             }
 
             mc.fontRendererObj.drawStringWithShadow(t, x, y, rgb);
