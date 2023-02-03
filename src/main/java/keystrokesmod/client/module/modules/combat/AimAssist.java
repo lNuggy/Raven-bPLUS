@@ -44,7 +44,7 @@ public class AimAssist extends Module {
       this.registerSetting(breakBlocks = new TickSetting("Break blocks", true));
       this.registerSetting(ignoreFriends = new TickSetting("Ignore Friends", true));
       this.registerSetting(weaponOnly = new TickSetting("Weapon only", false));
-      this.registerSetting(aimInvis = new TickSetting("Aim invis", false));
+      this.registerSetting(aimInvis = new TickSetting("Aim invisible", false));
       this.registerSetting(blatantMode = new TickSetting("Blatant mode", false));
    }
 

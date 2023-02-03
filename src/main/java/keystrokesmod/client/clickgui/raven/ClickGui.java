@@ -19,7 +19,7 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 public class ClickGui extends GuiScreen {
-   FontRenderer fr = new FontRenderer(new Font("Consolas Regular", 0, 20), true, true);
+   FontRenderer fr = new FontRenderer(new Font("Manrope", 0, 20), true, true);
    private ScheduledFuture<?> sf;
    private Timer aT;
    private Timer aL;
@@ -92,7 +92,7 @@ public class ClickGui extends GuiScreen {
             margin += 2;
          }
       }else {
-         fr.drawStringWithShadow("Nugware (Raven) B+ v" + clientVersion + " | Config: " + Raven.configManager.getConfig().getName(), 4, this.height - 3 - mc.fontRendererObj.FONT_HEIGHT, Utils.Client.astolfoColorsDraw(10, 14, speed));
+         fr.drawStringWithShadow("Nugware (Raven) B+ v" + clientVersion, 4, this.height - 3 - mc.fontRendererObj.FONT_HEIGHT, Utils.Client.astolfoColorsDraw(10, 14, speed));
          // mc.fontRendererObj.drawStringWithShadow("Nugware (Raven) B+ v" + clientVersion + " | Config: " + Raven.configManager.getConfig().getName(), 4, this.height - 3 - mc.fontRendererObj.FONT_HEIGHT, Utils.Client.astolfoColorsDraw(10, 14, speed));
       }
 

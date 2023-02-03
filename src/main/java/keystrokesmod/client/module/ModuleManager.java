@@ -11,6 +11,7 @@ import keystrokesmod.client.module.modules.player.*;
 import keystrokesmod.client.module.modules.render.*;
 import keystrokesmod.client.module.modules.world.AntiBot;
 import keystrokesmod.client.module.modules.world.ChatLogger;
+import keystrokesmod.client.modules.combat.RodAimbot;
 import keystrokesmod.client.utils.Utils;
 import net.minecraft.client.gui.FontRenderer;
 
@@ -99,6 +100,7 @@ public class ModuleManager {
       addModule(new AutoBlock());
       addModule(new MiddleClick());
       addModule(new Health());
+      addModule(new RodAimbot());
       // addModule(new TargetHUD());
 
       // why ?

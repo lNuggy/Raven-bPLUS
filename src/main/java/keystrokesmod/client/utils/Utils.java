@@ -79,6 +79,32 @@ public class Utils {
       //    }
       // }
 
+      public static float fovToEntityHorizontal(Entity ent) {
+         double x = ent.posX - mc.thePlayer.posX;
+         double z = ent.posZ - mc.thePlayer.posZ;
+         double yaw = Math.atan2(x, z) * 57.2957795D; // returns theta angle to the player
+
+         return (float)(yaw * -1.0D); // reverse fov?
+      }
+
+      public static float fovToEntityVertical(Entity ent) {
+         double thefuckinx = (ent.getEyeHeight() + ent.posY) - (mc.thePlayer.getEyeHeight() + mc.thePlayer.posY);
+         double x = ent.posX - mc.thePlayer.posX;
+         double z = ent.posZ - mc.thePlayer.posZ;
+         double theuhhfuckiny = Math.hypot(x, z);
+         double pitch = Math.atan2(thefuckinx, theuhhfuckiny) * 57.2957795D; // returns theta angle to the player
+
+
+
+         return (float)(pitch * -1.0D); // reverse fov?
+      }
+
+      public static boolean isEntityInFOV(Entity entity, float fov) {
+         float half = (float)((double)fov * 0.5D);
+         double v = ((double)(mc.thePlayer.rotationYaw - fovToEntityHorizontal(entity)) % 360.0D + 540.0D) % 360.0D - 180.0D;// hmmmm
+         return v > 0.0D && v < (double)half || (double)(-half) < v && v < 0.0D;
+      }
+
       public static void sendMessageToSelf(String txt) {
          if (isPlayerInGame()) {
             String m = Client.reformat("&7[&dR&7]&r " + txt);

@@ -13,6 +13,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import java.awt.*;
 
 public class Health extends Module {
+    FontRenderer fr = new FontRenderer(new Font("Manrope", 0, 20), true, true);
     public static SliderSetting yPosition;
 
     public Health() {
