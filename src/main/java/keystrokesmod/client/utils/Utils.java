@@ -120,12 +120,12 @@ public class Utils {
          return mc.thePlayer.moveForward != 0.0F || mc.thePlayer.moveStrafing != 0.0F;
       }
 
-      public static void aim(Entity en, float ps, boolean pc) {
+      public static void aim(Entity en, float pos, boolean pc) {
          if (en != null) {
             float[] t = getTargetRotations(en);
             if (t != null) {
                float y = t[0];
-               float p = t[1] + 4.0F + ps;
+               float p = t[1] + 4.0F + pos;
                if (pc) {
                   mc.getNetHandler().addToSendQueue(new C05PacketPlayerLook(y, p, mc.thePlayer.onGround));
                } else {

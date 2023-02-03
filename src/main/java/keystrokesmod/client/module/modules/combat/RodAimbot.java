@@ -1,4 +1,4 @@
-package keystrokesmod.client.modules.combat;
+package keystrokesmod.client.module.modules.combat;
 
 import java.util.Iterator;
 
@@ -22,12 +22,14 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class RodAimbot extends Module {
     public static SliderSetting a;
     public static SliderSetting b;
+    public static SliderSetting d;
     public static TickSetting c;
 
     public RodAimbot() {
         super("RodAimbot", Module.ModuleCategory.combat);
         this.registerSetting(a = new SliderSetting("FOV", 90.0D, 15.0D, 360.0D, 1.0D));
         this.registerSetting(b = new SliderSetting("Distance", 4.5D, 1.0D, 30.0D, 0.5D));
+        this.registerSetting(d = new SliderSetting("Height", -7, -50, 50.0D, 0.05D));
         this.registerSetting(c = new TickSetting("Aim invisible", false));
     }
 
@@ -38,7 +40,7 @@ public class RodAimbot extends Module {
                 Entity en = this.gE();
                 if (en != null) {
                     ev.setCanceled(true);
-                    Utils.Player.aim(en, -7.0F, true);
+                    Utils.Player.aim(en, (int) -d.getInput(), true);
                     mc.playerController.sendUseItem(mc.thePlayer, mc.theWorld, mc.thePlayer.getCurrentEquippedItem());
                 }
             }
