@@ -20,12 +20,14 @@ public class BedAura extends Module {
    public static SliderSetting green;
    public static SliderSetting blue;
    public static TickSetting rainbow;
+   public static TickSetting rotate;
    private java.util.Timer t;
    private BlockPos m = null;
    private final long per = 600L;
 
    public BedAura() {
       super("BedAura", ModuleCategory.player);
+      this.registerSetting(rotate = new TickSetting("Rotate", true));
       this.registerSetting(r = new SliderSetting("Range", 5.0D, 2.0D, 10.0D, 1.0D));
       this.registerSetting(red = new SliderSetting("Red", 255.0D, 0.0D, 255.0D, 1.0D));
       this.registerSetting(green = new SliderSetting("Green", 0.0D, 0.0D, 255.0D, 1.0D));
@@ -85,6 +87,9 @@ public class BedAura extends Module {
    }
 
    private void mi(BlockPos p) {
+      if (rotate.isToggled()) {
+         Utils.Player.aim(Module.mc.thePlayer, 0, true);
+      }
       mc.thePlayer.sendQueue.addToSendQueue(new C07PacketPlayerDigging(Action.START_DESTROY_BLOCK, p, EnumFacing.NORTH));
       mc.thePlayer.sendQueue.addToSendQueue(new C07PacketPlayerDigging(Action.STOP_DESTROY_BLOCK, p, EnumFacing.NORTH));
    }

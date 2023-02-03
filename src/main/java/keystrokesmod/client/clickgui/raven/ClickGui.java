@@ -92,7 +92,7 @@ public class ClickGui extends GuiScreen {
             margin += 2;
          }
       }else {
-         fr.drawStringWithShadow("Nugware (Raven) B+ v" + clientVersion, 4, this.height - 3 - mc.fontRendererObj.FONT_HEIGHT, Utils.Client.astolfoColorsDraw(10, 14, speed));
+         fr.drawStringWithShadow("Nugware (Raven) B+ v2.0.0", 4, this.height - 3 - mc.fontRendererObj.FONT_HEIGHT, Utils.Client.astolfoColorsDraw(10, 14, speed));
          // mc.fontRendererObj.drawStringWithShadow("Nugware (Raven) B+ v" + clientVersion + " | Config: " + Raven.configManager.getConfig().getName(), 4, this.height - 3 - mc.fontRendererObj.FONT_HEIGHT, Utils.Client.astolfoColorsDraw(10, 14, speed));
       }
 

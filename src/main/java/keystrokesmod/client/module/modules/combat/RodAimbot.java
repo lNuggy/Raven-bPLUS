@@ -29,7 +29,7 @@ public class RodAimbot extends Module {
         super("RodAimbot", Module.ModuleCategory.combat);
         this.registerSetting(a = new SliderSetting("FOV", 90.0D, 15.0D, 360.0D, 1.0D));
         this.registerSetting(b = new SliderSetting("Distance", 4.5D, 1.0D, 30.0D, 0.5D));
-        this.registerSetting(d = new SliderSetting("Height", -7, -70, 70.0D, 5D));
+        this.registerSetting(d = new SliderSetting("Height", -7, -70, 70.0D, 7D));
         this.registerSetting(c = new TickSetting("Aim invisible", false));
     }
 
