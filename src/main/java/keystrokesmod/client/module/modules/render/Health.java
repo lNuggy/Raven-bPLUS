@@ -25,16 +25,13 @@ public class Health extends Module {
         int width = res.getScaledWidth();
         int height = res.getScaledHeight();
 
-        String t = mc.thePlayer.getHealth() + "/" + mc.thePlayer.getMaxHealth();
+        String t = "Health: " + mc.thePlayer.getHealth() + "/" + mc.thePlayer.getMaxHealth();
         int x = width / 2 - mc.fontRendererObj.getStringWidth(t) / 2;
         int y = (int)(height * yPosition.getInput());
 
-        int rgb = 0xffffff;
-        if (mc.thePlayer.getHealth() <= 20) {
-            rgb = 0x00FF00;
-        } else if (mc.thePlayer.getHealth() <= 5) {
+        int rgb = 0x00FF00;
+        if (mc.thePlayer.getHealth() <= 5) {
             rgb = 0xff0000;
-
         } else if (mc.thePlayer.getHealth() <= 10) {
             rgb = 0xffa500;
         }
