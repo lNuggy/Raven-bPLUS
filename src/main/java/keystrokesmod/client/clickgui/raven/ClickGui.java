@@ -19,6 +19,7 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 public class ClickGui extends GuiScreen {
+   FontRenderer fr = new FontRenderer(new Font("Consolas Regular", 0, 20), true, true);
    private ScheduledFuture<?> sf;
    private Timer aT;
    private Timer aL;
@@ -26,7 +27,6 @@ public class ClickGui extends GuiScreen {
    private Timer aR;
    private final  ArrayList<CategoryComponent> categoryList;
    public final Terminal terminal;
-   // FontRenderer fr = new FontRenderer(new Font("Inter", 0, 20), false, false);
 
    public ClickGui() {
       this.terminal = new Terminal();
@@ -65,7 +65,13 @@ public class ClickGui extends GuiScreen {
       drawRect(0, 0, this.width, this.height, (int)(this.aR.getValueFloat(0.0F, 0.7F, 2) * 255.0F) << 24);
       int quarterScreenHeight = this.height / 4;
       int halfScreenWidth = this.width / 2;
-      int w_c = 30 - this.aT.getValueInt(0, 30, 3);
+      int w_c = 30 - this.aT.getValueInt(10, 30, 1);
+      // fr.drawCenteredString("r", halfScreenWidth + 1 - w_c, quarterScreenHeight - 25, Utils.Client.astolfoColorsDraw(2, 6, 1500L));
+      // fr.drawCenteredString("a", halfScreenWidth - w_c, quarterScreenHeight - 15, Utils.Client.astolfoColorsDraw(2, 6, 1200L));
+      // fr.drawCenteredString("v", halfScreenWidth - w_c, quarterScreenHeight - 5, Utils.Client.astolfoColorsDraw(2, 6, 900L));
+      // fr.drawCenteredString("e", halfScreenWidth - w_c, quarterScreenHeight + 5, Utils.Client.astolfoColorsDraw(2, 6, 600L));
+      // fr.drawCenteredString("n", halfScreenWidth - w_c, quarterScreenHeight + 15, Utils.Client.astolfoColorsDraw(2, 6, 300L));
+      // fr.drawCenteredString("b+", halfScreenWidth + 1 + w_c, quarterScreenHeight + 30, Utils.Client.astolfoColorsDraw(2, 6, 0L));
       this.drawCenteredString(this.fontRendererObj, "r", halfScreenWidth + 1 - w_c, quarterScreenHeight - 25, Utils.Client.rainbowDraw(2L, 1500L));
       this.drawCenteredString(this.fontRendererObj, "a", halfScreenWidth - w_c, quarterScreenHeight - 15, Utils.Client.rainbowDraw(2L, 1200L));
       this.drawCenteredString(this.fontRendererObj, "v", halfScreenWidth - w_c, quarterScreenHeight - 5, Utils.Client.rainbowDraw(2L, 900L));
@@ -80,12 +86,14 @@ public class ClickGui extends GuiScreen {
          int rows = 1;
          for (int i = Raven.updateText.length-1; i >= 0; i--) {
             String up = Raven.updateText[i];
-            mc.fontRendererObj.drawString(up, halfScreenWidth - this.fontRendererObj.getStringWidth(up) / 2, this.height - this.fontRendererObj.FONT_HEIGHT * rows - margin, Utils.Client.astolfoColorsDraw(10, 28, speed));
+            fr.drawStringWithShadow(up, halfScreenWidth - this.fontRendererObj.getStringWidth(up) / 2, this.height - this.fontRendererObj.FONT_HEIGHT * rows - margin, Utils.Client.astolfoColorsDraw(10, 28, speed));
+            //mc.fontRendererObj.drawString(up, halfScreenWidth - this.fontRendererObj.getStringWidth(up) / 2, this.height - this.fontRendererObj.FONT_HEIGHT * rows - margin, Utils.Client.astolfoColorsDraw(10, 28, speed));
             rows++;
             margin += 2;
          }
       }else {
-         mc.fontRendererObj.drawStringWithShadow("Nugware (Raven) B+ v" + clientVersion + " | Config: " + Raven.configManager.getConfig().getName()., 4, this.height - 3 - mc.fontRendererObj.FONT_HEIGHT, Utils.Client.astolfoColorsDraw(10, 14, speed));
+         fr.drawStringWithShadow("Nugware (Raven) B+ v" + clientVersion + " | Config: " + Raven.configManager.getConfig().getName(), 4, this.height - 3 - mc.fontRendererObj.FONT_HEIGHT, Utils.Client.astolfoColorsDraw(10, 14, speed));
+         // mc.fontRendererObj.drawStringWithShadow("Nugware (Raven) B+ v" + clientVersion + " | Config: " + Raven.configManager.getConfig().getName(), 4, this.height - 3 - mc.fontRendererObj.FONT_HEIGHT, Utils.Client.astolfoColorsDraw(10, 14, speed));
       }
 
       this.drawVerticalLine(halfScreenWidth - 10 - w_c, quarterScreenHeight - 30, quarterScreenHeight + 43, Color.white.getRGB());

@@ -98,6 +98,7 @@ public class ModuleManager {
       addModule(new ExplicitNametags());
       addModule(new AutoBlock());
       addModule(new MiddleClick());
+      addModule(new Health());
       // addModule(new TargetHUD());
 
       // why ?
