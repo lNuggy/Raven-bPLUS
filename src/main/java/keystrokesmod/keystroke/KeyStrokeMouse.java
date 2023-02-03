@@ -19,7 +19,7 @@ public class KeyStrokeMouse {
    private final List<Long> f = new ArrayList();
    private boolean g = true;
    private long h = 0L;
-   FontRenderer fr = new FontRenderer(new Font("Unispace", 0, 20), true, false);
+   FontRenderer fr = new FontRenderer(new Font("Consolas Regular", 1, 20), true, true);
 
    public KeyStrokeMouse(int k, int l, int m) {
       this.c = k;

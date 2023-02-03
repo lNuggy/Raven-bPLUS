@@ -9,7 +9,7 @@ import net.minecraft.client.settings.KeyBinding;
 import org.lwjgl.input.Keyboard;
 
 public class KeyStrokeKeyRenderer {
-   FontRenderer fr = new FontRenderer(new Font("Arial", 1, 20), true, false);
+   FontRenderer fr = new FontRenderer(new Font("Consolas Regular", 1, 20), true, true);
    private final Minecraft a = Minecraft.getMinecraft();
    private final KeyBinding keyBinding;
    private final int c;

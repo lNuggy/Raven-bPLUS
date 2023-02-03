@@ -21,21 +21,23 @@ public class Health extends Module {
 
     @SubscribeEvent
     public void r(TickEvent.RenderTickEvent e) {
-        ScaledResolution res = new ScaledResolution(mc);
-        int width = res.getScaledWidth();
-        int height = res.getScaledHeight();
+        if (mc.currentScreen == null) {
+            ScaledResolution res = new ScaledResolution(mc);
+            int width = res.getScaledWidth();
+            int height = res.getScaledHeight();
 
-        String t = "Health: " + mc.thePlayer.getHealth() + "/" + mc.thePlayer.getMaxHealth();
-        int x = width / 2 - mc.fontRendererObj.getStringWidth(t) / 2;
-        int y = (int)(height * yPosition.getInput());
+            String t = mc.thePlayer.getHealth() + "/" + mc.thePlayer.getMaxHealth();
+            int x = width / 2 - mc.fontRendererObj.getStringWidth(t) / 2;
+            int y = (int)(height * yPosition.getInput());
 
-        int rgb = 0x00FF00;
-        if (mc.thePlayer.getHealth() <= 5) {
-            rgb = 0xff0000;
-        } else if (mc.thePlayer.getHealth() <= 10) {
-            rgb = 0xffa500;
+            int rgb = 0x00FF00;
+            if (mc.thePlayer.getHealth() <= 5) {
+                rgb = 0xff0000;
+            } else if (mc.thePlayer.getHealth() <= 10) {
+                rgb = 0xffa500;
+            }
+
+            mc.fontRendererObj.drawStringWithShadow(t, x, y, rgb);
         }
-
-        mc.fontRendererObj.drawStringWithShadow(t, x, y, rgb);
     }
 }
