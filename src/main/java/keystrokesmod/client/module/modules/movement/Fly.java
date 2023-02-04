@@ -142,6 +142,10 @@ public class Fly extends Module {
 
       public void onEnable() {
          startY = mc.thePlayer.posY;
+         mc.thePlayer.jump();
+         mc.thePlayer.jump();
+         mc.thePlayer.jump();
+         boolean jumped = true;
       }
 
       public void onDisable() {
@@ -158,14 +162,18 @@ public class Fly extends Module {
          ));
          startY = null;
          ticksPassed = 0;
+         boolean jumped = false;
       }
 
       public void onTick(TickEvent.ClientTickEvent event) {
          ticksPassed++;
-         if (ticksPassed % 1200 == 0 && startY != null) {
+         if (ticksPassed % 20 == 0 && startY != null) {
             mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(
-                    mc.thePlayer.posX, mc.thePlayer.posY + 5, mc.thePlayer.posZ, true
+                    mc.thePlayer.posX + 1, mc.thePlayer.posY, mc.thePlayer.posZ, true
             ));
+         }
+         if (ticksPassed == 20) {
+            ticksPassed = 0;
          }
       }
 

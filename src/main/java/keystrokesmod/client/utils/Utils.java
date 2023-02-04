@@ -137,6 +137,17 @@ public class Utils {
          }
       }
 
+      public static void blockAim(float yaw, float pitch, boolean pc) {
+         if (mc.thePlayer != null) {
+            if (pc) {
+               mc.getNetHandler().addToSendQueue(new C05PacketPlayerLook(yaw, pitch, mc.thePlayer.onGround));
+            } else {
+               mc.thePlayer.rotationYaw = yaw;
+               mc.thePlayer.rotationPitch = pitch;
+            }
+         }
+      }
+
       public static double fovFromEntity(Entity en) {
          return ((double)(mc.thePlayer.rotationYaw - fovToEntity(en)) % 360.0D + 540.0D) % 360.0D - 180.0D;
       }

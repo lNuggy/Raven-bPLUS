@@ -9,6 +9,7 @@ import net.minecraft.network.play.client.C07PacketPlayerDigging;
 import net.minecraft.network.play.client.C07PacketPlayerDigging.Action;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Vec3;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import java.awt.Color;
@@ -86,11 +87,14 @@ public class BedAura extends Module {
       };
    }
 
-   private void mi(BlockPos p) {
-      if (rotate.isToggled()) {
-         Utils.Player.aim(Module.mc.thePlayer, 0, true);
-      }
-      mc.thePlayer.sendQueue.addToSendQueue(new C07PacketPlayerDigging(Action.START_DESTROY_BLOCK, p, EnumFacing.NORTH));
-      mc.thePlayer.sendQueue.addToSendQueue(new C07PacketPlayerDigging(Action.STOP_DESTROY_BLOCK, p, EnumFacing.NORTH));
+   public void mi(BlockPos bed) {
+      Vec3 playerPos = new Vec3(Module.mc.thePlayer.posX, Module.mc.thePlayer.posY + Module.mc.thePlayer.getEyeHeight(), Module.mc.thePlayer.posZ);
+      Vec3 bedPos = new Vec3(bed.getX() + 0.5, bed.getY() + 0.5, bed.getZ() + 0.5);
+      double xDiff = bedPos.xCoord - playerPos.xCoord;
+      double yDiff = bedPos.yCoord - playerPos.yCoord;
+      double zDiff = bedPos.zCoord - playerPos.zCoord;
+      double yaw = Math.toDegrees(Math.atan2(zDiff, xDiff)) - 90;
+      double pitch = Math.toDegrees(Math.atan2(yDiff, Math.sqrt(xDiff * xDiff + zDiff * zDiff)));
+      Utils.Player.blockAim((float) yaw, (float) pitch, true);
    }
 }
